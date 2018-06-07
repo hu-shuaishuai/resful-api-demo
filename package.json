@@ -1,0 +1,27 @@
+{
+  "name": "resful-api",
+  "version": "1.0.0",
+  "description": "使用node编写resful API",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaohu-xiaohu/resful-api-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaohu-xiaohu/resful-api-demo/issues"
+  },
+  "homepage": "https://github.com/xiaohu-xiaohu/resful-api-demo#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
