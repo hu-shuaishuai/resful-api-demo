@@ -6,7 +6,6 @@ router.use(bodyParser.json());
 
 var User = require("./User");
 
-//添加这部分
 //创建一个新用户
 router.post("/", (req, res) => {
   User.create(
@@ -32,6 +31,39 @@ router.get("/", (req, res) => {
       return res.status(500).send("There was a problem finding the users.");
     res.status(200).send(users);
   });
+});
+
+//从数据库中获取一个用户信息
+router.get("/:id", (req, res) => {
+  User.findById(req.params.id, (err, user) => {
+    if (err)
+      return res.status(500).send("There was a problem finding the user.");
+    if (!user) return res.status(404).send("No user found.");
+    res.status(200).send(user);
+  });
+});
+
+//从数据库中删除一个用户
+router.delete("/:id", (req, res) => {
+  User.findByIdAndRemove(req.params.id, (err, user) => {
+    if (err)
+      return res.status(500).send("There was a problem deleting the user.");
+    res.status(200).send(`User ${user.name} was deleted.`);
+  });
+});
+
+//更新数据库中的单个用户
+router.put("/:id", (req, res) => {
+  User.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    (err, user) => {
+      if (err)
+        return res.status(500).send("There was a problem updating the user.");
+      res.status(200).send(user);
+    }
+  );
 });
 
 module.exports = router;
